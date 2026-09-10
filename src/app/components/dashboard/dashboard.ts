@@ -32,7 +32,7 @@ export class Dashboard {
       id: 2,
       title: 'Gestión académica',
       icon: 'bi-mortarboard-fill',
-      route: '/dashboard/academic-management',
+      route: '/dashboard/users',
       role: 'ADMIN'
     },
 

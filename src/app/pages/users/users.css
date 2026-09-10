@@ -1,0 +1,29 @@
+/* Transición suave para la tarjeta completa */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* Efecto de elevación al pasar el mouse */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Animación para los íconos de Bootstrap */
+.card i.bi {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* El ícono crece un poco cuando pasas el mouse por la tarjeta */
+.card:hover i.bi {
+  transform: scale(1.2);
+}
+
+/* Ajuste visual explícito para botones deshabilitados */
+.btn.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}

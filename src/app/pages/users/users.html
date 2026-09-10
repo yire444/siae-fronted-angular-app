@@ -1,1 +1,22 @@
-<p>users works!</p>
+<div class="container mt-4">
+  <h2 class="mb-4">Gestión de Usuarios</h2>
+  
+  <div class="row">
+    @for (card of cardUser; track card.id) {
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm h-100 border-0 bg-light">
+          <div class="card-body text-center p-4">
+            <i class="bi {{ card.icon }} text-primary mb-3" style="font-size: 3rem;"></i>
+            <h4 class="card-title fw-bold">{{ card.userType }}</h4>
+            <p class="card-text text-muted">{{ card.description }}</p>
+            
+            <a [routerLink]="card.url" 
+               class="btn btn-primary px-4 rounded-pill mt-2">
+              Ingresar a {{ card.userType }}
+            </a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
