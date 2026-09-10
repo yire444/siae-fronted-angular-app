@@ -1,0 +1,47 @@
+<div class="container-fluid vh-100 overflow-hidden">
+  <div class="row h-100">
+    
+    <!-- SIDEBAR / MENÚ LATERAL -->
+    <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse text-white p-3 d-flex flex-column justify-content-between">
+      <div>
+        <div class="text-center py-3 mb-3 border-bottom border-secondary">
+          <h4 class="text-white m-0 fw-bold">SIAE</h4>
+          <small class="text-muted">Panel de Director</small>
+        </div>
+
+        <ul class="nav flex-column gap-1">
+          @for (item of navOptions; track item.id) {
+            <li class="nav-item">
+              <a [routerLink]="item.route" class="nav-link text-white d-flex align-items-center gap-2 rounded px-3 py-2 menu-item-hover">
+                <i class="bi" [class]="item.icon.startsWith('bi-') ? item.icon : 'bi-' + item.icon"></i>
+                <span>{{ item.title }}</span>
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="border-top border-secondary pt-3">
+        <a routerLink="/login" class="nav-link text-danger d-flex align-items-center gap-2 px-3 py-2 rounded menu-logout-hover">
+          <i class="bi bi-box-arrow-right"></i>
+          <span>Cerrar sesión</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4 bg-light h-100 overflow-y-auto">
+      
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2 text-dark fw-bold">Panel de Control</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <span class="badge bg-primary p-2">Colegio Activo: Institución Principal</span>
+        </div>
+      </div>
+
+      <router-outlet></router-outlet>
+
+    </main>
+
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<section class="d-flex align-items-center justify-content-center min-vh-100" style="background-color: #f8fafc;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-5 col-lg-4">
+        
+        <div class="card shadow-sm border-0 rounded-4 p-4 p-md-5">
+          
+          <!-- Encabezado -->
+          <div class="text-center mb-4">
+            <h3 class="fw-bold text-dark">SIAE</h3>
+            <p class="text-secondary small">Sistema Integral de Administración Educativa</p>
+          </div>
+
+          <!-- Mensaje de Éxito -->
+          @if (successMessage) {
+            <div class="alert alert-success text-center small fw-semibold py-2">
+              <i class="bi bi-check-circle-fill me-1"></i>{{ successMessage }}
+            </div>
+          }
+
+          <!-- Mensaje de Error (Credenciales incorrectas) -->
+          @if (errorMessage) {
+            <div class="alert alert-danger text-center small fw-semibold py-2">
+              <i class="bi bi-exclamation-triangle-fill me-1"></i>{{ errorMessage }}
+            </div>
+          }
+
+          <!-- Formulario Reactivo -->
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            
+            <!-- Campo Correo -->
+            <div class="mb-3">
+              <label for="email" class="form-label fw-bold text-dark small">Ingrese su DNI</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light text-success border-end-0">
+                  <i class="bi bi-person-fill"></i>
+                </span>
+                <input type="email" id="email" formControlName="email" 
+                       class="form-control bg-light border-start-0" 
+                       placeholder="admin@siae.com">
+              </div>
+            </div>
+
+            <!-- Campo Contraseña -->
+            <div class="mb-4">
+              <label for="password" class="form-label fw-bold text-dark small">Contraseña</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light text-success border-end-0">
+                  <i class="bi bi-lock-fill"></i>
+                </span>
+                <input type="password" id="password" formControlName="password" 
+                       class="form-control bg-light border-start-0" 
+                       placeholder="••••••">
+              </div>
+            </div>
+
+            <!-- Botón de Ingreso -->
+            <button type="submit" class="btn btn-success w-100 fw-bold py-2 shadow-sm">
+              Ingresar
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

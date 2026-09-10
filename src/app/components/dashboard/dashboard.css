@@ -1,0 +1,11 @@
+/* Efecto hover para las opciones del menú */
+.menu-item-hover:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Efecto hover para el botón de salir */
+.menu-logout-hover:hover {
+  background-color: rgba(220, 53, 69, 0.15);
+  transition: background-color 0.2s ease-in-out;
+}

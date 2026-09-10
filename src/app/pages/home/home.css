@@ -1,0 +1,24 @@
+.stat-card {
+  border-left: 4px solid #0d6efd;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.stat-card__title {
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+}
+
+.stat-card__count {
+  font-size: 1.75rem;
+  color: #1e293b;
+}
+
+.stat-card__icon {
+  background-color: rgba(13, 110, 253, 0.1);
+  color: #0d6efd;
+}

@@ -1,0 +1,31 @@
+<section class="home-section">
+  <div class="mb-4">
+    <h2 class="fw-bold text-dark">Panel de Estadísticas</h2>
+    <p class="text-muted">Resumen general y métricas de la institución.</p>
+  </div>
+
+  <div class="row g-4">
+    @for (stat of stats; track stat.id) {
+      <article class="col-12 col-md-6 col-lg-4">
+        <div class="card stat-card h-100 border-0 shadow-sm">
+          <div class="card-body d-flex align-items-center justify-content-between">
+            <div>
+              <h3 class="stat-card__title text-muted text-uppercase mb-1">
+                {{ stat.title }}
+              </h3>
+              <p class="stat-card__count fw-bold mb-0">
+                {{ stat.count }}
+              </p>
+              <small class="text-muted">
+                {{ stat.subtitle }}
+              </small>
+            </div>
+            <div class="stat-card__icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="bi" [class]="stat.icon" aria-hidden="true"></i>
+            </div>
+          </div> 
+        </div> 
+      </article>
+    }
+  </div>
+</section>
