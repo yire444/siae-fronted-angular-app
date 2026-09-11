@@ -1,1 +1,77 @@
-<p>students works!</p>
+<div class="container-fluid py-4">
+  
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="fw-bold text-dark">Gestión de Alumnos</h2>
+      <p class="text-muted mb-0">Listado general de estudiantes.</p>
+    </div>
+    <!-- Aquí más adelante podrías agregar una ruta o evento para ir a la vista de registro -->
+    <button class="btn btn-primary d-flex align-items-center gap-2">
+      <i class="bi bi-person-plus-fill"></i> Registrar Alumno
+    </button>
+  </div>
+
+  <!--TABLAS-->
+  <div class="card border-0 shadow-sm">
+    <div class="card-body">
+      
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>ID</th>
+              <th>Apellidos y Nombres</th>
+              <th>DNI</th>
+              <th>Nivel</th>
+              <th>Estado</th>
+              <th class="text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Recorremos la lista usando el bucle moderno @for de Angular -->
+            @for (student of studentsList; track student.id) {
+              <tr>
+                <!-- 1. ID -->
+                <td class="fw-semibold">{{ student.id }}</td>
+
+                <!-- 2. Apellidos y Nombres -->
+                <td>{{ student.paternalSurname }} {{ student.maternalSurname }}, {{ student.name }}</td>
+
+                <!-- 3. DNI -->
+                <td>{{ student.dni }}</td>
+
+                <!-- 4. Nivel (y opcionalmente grado/sección) -->
+                <td>
+                  <span class="badge bg-secondary">{{ student.level }}</span>
+                  <span class="text-muted ms-1">{{ student.grade }} "{{ student.section }}"</span>
+                </td>
+
+                <!-- 5. Estado -->
+                <td>
+                  <span class="badge" [ngClass]="student.status === 'Activo' ? 'bg-success' : 'bg-danger'">
+                    {{ student.status }}
+                  </span>
+                </td>
+
+                <!-- 6. Acciones -->
+                <td class="text-center">
+                  <button class="btn btn-sm btn-warning me-1" title="Edit">
+                    <i class="bi bi-pencil-fill"></i>
+                  </button>
+                  <button class="btn btn-sm btn-info me-1" title="Details">
+                    <i class="bi bi-eye-fill"></i>
+                  </button>
+                  <button class="btn btn-sm btn-danger" title="Delete">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -7,6 +7,7 @@ import {Dashboard} from './components/dashboard/dashboard';
 //Subpáginas
 import {Home} from './pages/home/home';
 import { Users } from './pages/users/users';
+import { Students } from './pages/users/students/students';
 
 export const routes: Routes = [
     { path: 'login', component: Login },
@@ -16,7 +17,8 @@ export const routes: Routes = [
         children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: Home },
-            { path: 'users', component: Users }
+            { path: 'users', component: Users },
+            { path: 'users/students', component: Students}
         ]
     },
     { path: '', redirectTo: 'login', pathMatch: 'full' },
