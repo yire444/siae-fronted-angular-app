@@ -1,0 +1,138 @@
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      
+      <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+          
+          <!-- Encabezado del Formulario -->
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+              <h3 class="fw-bold text-dark mb-1">Registrar Nuevo Alumno</h3>
+              <p class="text-muted mb-0">Complete los datos personales y académicos del estudiante.</p>
+            </div>
+            <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-1" routerLink="/dashboard/users/students">
+              <i class="bi bi-arrow-left"></i> Volver
+            </button>
+          </div>
+
+          <!-- Formulario conectado al FormGroup del TS -->
+          <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+            
+            <h5 class="mb-3 border-bottom pb-2">Datos Personales</h5>
+            <div class="row g-3 mb-4">
+              
+              <!-- Nombres -->
+              <div class="col-12">
+                <label class="form-label fw-semibold">Nombres</label>
+                <input type="text" class="form-control" formControlName="names" placeholder="Ej. Carlos André">
+              </div>
+
+              <!-- Apellido Paterno -->
+              <div class="col-md-4">
+                <label class="form-label fw-semibold">Apellido Paterno</label>
+                <input type="text" class="form-control" formControlName="paternalSurname" placeholder="Ej. García">
+              </div>
+
+              <!-- Apellido Materno -->
+              <div class="col-md-4">
+                <label class="form-label fw-semibold">Apellido Materno</label>
+                <input type="text" class="form-control" formControlName="maternalSurname" placeholder="Ej. López">
+              </div>
+              
+              <!-- Género-->
+              <div class="col-md-4">
+                <label class="form-label fw-semibold">Género</label>
+                <select class="form-select" formControlName="gender">
+                  <option value="">Seleccione...</option>
+                  <option value="MALE">Masculino</option>
+                  <option value="FEMALE">Femenino</option>
+                </select>
+              </div>
+
+              <!--Tipo de documento (Corregido)-->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Tipo de Documento</label>
+                <select class="form-select" formControlName="documentType">
+                  <option value="">Seleccione...</option>
+                  <option value="DNI">DNI</option>
+                  <option value="CE">CE (Carnet de extranjería)</option>
+                  <option value="PASSPORT">Pasaporte</option>
+                </select>
+              </div>
+              
+              <!--Número de documento (Corregido) -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Número de documento</label>
+                <input type="text" class="form-control" formControlName="documentNumber" placeholder="Número de documento">
+              </div>
+
+              <!-- Fecha de Nacimiento -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" formControlName="birthdate">
+              </div>
+              
+              <!-- Teléfono (NUEVO, requerido por DTO) -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Teléfono</label>
+                <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Ej. 987654321">
+              </div>
+              
+              <!-- Correo (NUEVO, requerido por DTO) -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Correo Electrónico</label>
+                <input type="email" class="form-control" formControlName="email" placeholder="correo@ejemplo.com">
+              </div>
+
+              <!-- Dirección -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Dirección</label>
+                <input type="text" class="form-control" formControlName="address" placeholder="Av. Los Próceres 123">
+              </div>
+            </div>
+
+            <h5 class="mb-3 border-bottom pb-2">Datos Académicos</h5>
+            <div class="row g-3">
+              <!-- Nivel -->
+              <div class="col-md-4">
+                <label class="form-label fw-semibold">Nivel</label>
+                <select class="form-select" formControlName="level">
+                  <option value="">Seleccione...</option>
+                  <option value="INITIAL">Inicial</option>
+                  <option value="PRIMARY">Primaria</option>
+                  <option value="SECONDARY">Secundaria</option>
+                </select>
+              </div>
+
+              <!-- Grado -->
+              <div class="col-md-4">
+                <label class="form-label fw-semibold">Grado</label>
+                <input type="text" class="form-control" formControlName="grade" placeholder="Ej. 3ro">
+              </div>
+
+              <!-- Sección -->
+              <div class="col-md-4">
+                <label class="form-label fw-semibold">Sección</label>
+                <input type="text" class="form-control" formControlName="section" placeholder="Ej. A">
+              </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+              <button type="button" class="btn btn-light px-4" routerLink="/dashboard/users/students">
+                Cancelar
+              </button>
+              <button type="submit" class="btn btn-primary px-4 d-flex align-items-center gap-2">
+                <i class="bi bi-save-fill"></i> Guardar Alumno
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
