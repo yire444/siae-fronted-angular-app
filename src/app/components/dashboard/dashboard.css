@@ -1,11 +1,32 @@
-/* Efecto hover para las opciones del menú */
+/* Ancho fijo de la barra lateral */
+.sidebar {
+  width: 250px;
+  min-width: 250px;
+}
+
+/* Animación y rotación de la flecha */
+.arrow-icon {
+  font-size: 0.8rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.arrow-icon.rotate {
+  transform: rotate(90deg); /* Rota la flecha apuntando hacia abajo */
+}
+
+/* Efecto hover general */
 .menu-item-hover:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1) !important;
   transition: background-color 0.2s ease-in-out;
 }
 
-/* Efecto hover para el botón de salir */
+/* Efecto hover botón salir */
 .menu-logout-hover:hover {
-  background-color: rgba(220, 53, 69, 0.15);
+  background-color: rgba(220, 53, 69, 0.15) !important;
   transition: background-color 0.2s ease-in-out;
+}
+
+/* Tamaño texto subcategoría opcional */
+.fs-7 {
+  font-size: 0.875rem;
 }

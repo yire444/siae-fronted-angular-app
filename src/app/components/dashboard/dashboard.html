@@ -1,37 +1,89 @@
 <div class="container-fluid vh-100 overflow-hidden">
-  <div class="row h-100">
+  <div class="row h-100 flex-nowrap">
     
     <!-- SIDEBAR / MENÚ LATERAL -->
-    <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse text-white p-3 d-flex flex-column justify-content-between">
-      <div>
+    <nav class="sidebar bg-dark text-white p-3 d-flex flex-column justify-content-between h-100">
+      
+      <!-- CONTENEDOR SUPERIOR CON SCROLL SOLO EN EL MENÚ -->
+      <div class="d-flex flex-column flex-grow-1 overflow-hidden">
+        
+        <!-- ENCABEZADO CENTRADO -->
         <div class="text-center py-3 mb-3 border-bottom border-secondary">
           <h4 class="text-white m-0 fw-bold">SIAE</h4>
           <small class="text-muted">Panel de Director</small>
         </div>
 
-        <ul class="nav flex-column gap-1">
-          @for (item of navOptions; track item.id) {
-            <li class="nav-item">
-              <a [routerLink]="item.route" class="nav-link text-white d-flex align-items-center gap-2 rounded px-3 py-2 menu-item-hover">
-                <i class="bi" [class]="item.icon.startsWith('bi-') ? item.icon : 'bi-' + item.icon"></i>
-                <span>{{ item.title }}</span>
-              </a>
-            </li>
-          }
-        </ul>
+        <!-- LISTA DE MENÚ CON SCROLL INDEPENDIENTE -->
+        <div class="overflow-y-auto flex-grow-1 pe-1">
+          <ul class="nav flex-column gap-1">
+            @for (item of navOptions; track item.id) {
+              <li class="nav-item">
+
+                <!-- 1. OPCIÓN SIMPLE (sin hijos) -->
+                @if (!item.children) {
+                  <a 
+                    [routerLink]="item.route" 
+                    routerLinkActive="active bg-secondary"
+                    class="nav-link text-white d-flex align-items-center gap-2 rounded px-3 py-2 menu-item-hover">
+                    <i class="bi fs-5" [class]="item.icon.startsWith('bi-') ? item.icon : 'bi-' + item.icon"></i>
+                    <span>{{ item.title }}</span>
+                  </a>
+                }
+
+                <!-- 2. OPCIÓN CON SUBCATEGORÍAS -->
+                @else {
+                  <div class="w-100">
+                    <button 
+                      type="button" 
+                      (click)="toggleMenu(item)" 
+                      class="btn text-white w-100 d-flex align-items-center justify-content-between rounded px-3 py-2 menu-item-hover border-0 shadow-none">
+                      <div class="d-flex align-items-center gap-2">
+                        <i class="bi fs-5" [class]="item.icon.startsWith('bi-') ? item.icon : 'bi-' + item.icon"></i>
+                        <span>{{ item.title }}</span>
+                      </div>
+                      <i class="bi bi-chevron-right arrow-icon" [class.rotate]="item.isOpen"></i>
+                    </button>
+
+                    <!-- SUBMENÚ -->
+                    @if (item.isOpen) {
+                      <ul class="nav flex-column gap-1 ps-3 pt-1">
+                        @for (child of item.children; track child.id) {
+                          <li class="nav-item">
+                            <a 
+                              [routerLink]="child.route" 
+                              routerLinkActive="active bg-secondary"
+                              class="nav-link text-white-50 d-flex align-items-center gap-2 rounded px-3 py-1-5 menu-item-hover fs-7">
+                              <i class="bi" [class]="child.icon.startsWith('bi-') ? child.icon : 'bi-' + child.icon"></i>
+                              <span>{{ child.title }}</span>
+                            </a>
+                          </li>
+                        }
+                      </ul>
+                    }
+                  </div>
+                }
+
+              </li>
+            }
+          </ul>
+        </div>
+
       </div>
 
-      <div class="border-top border-secondary pt-3">
-        <a routerLink="/login" class="nav-link text-danger d-flex align-items-center gap-2 px-3 py-2 rounded menu-logout-hover">
-          <i class="bi bi-box-arrow-right"></i>
+      <!-- BOTÓN DE CERRAR SESIÓN (SIEMPRE FIJO ABAJO) -->
+      <div class="border-top border-secondary pt-3 mt-auto">
+        <a 
+          routerLink="/login" 
+          class="nav-link text-danger d-flex align-items-center gap-2 px-3 py-2 rounded menu-logout-hover">
+          <i class="bi bi-box-arrow-right fs-5"></i>
           <span>Cerrar sesión</span>
         </a>
       </div>
+
     </nav>
 
     <!-- CONTENIDO PRINCIPAL -->
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4 bg-light h-100 overflow-y-auto">
-      
+    <main class="col px-md-4 py-4 bg-light h-100 overflow-y-auto">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2 text-dark fw-bold">Panel de Control</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
@@ -40,7 +92,6 @@
       </div>
 
       <router-outlet></router-outlet>
-
     </main>
 
   </div>
